@@ -19,6 +19,10 @@ var
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
+		// Don't allow jQuery to wrap jQuery
+		if (selector === jQuery) {
+			throw new Error("Ack! jQuery wrapped in jQuery is too much awesome for this world!");
+		}
 		// The jQuery object is actually just the init constructor 'enhanced'
 		// Need init if jQuery is called (just allow error to be thrown if not included)
 		return new jQuery.fn.init( selector, context );
